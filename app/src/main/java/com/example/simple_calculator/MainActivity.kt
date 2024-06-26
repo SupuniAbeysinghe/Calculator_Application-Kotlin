@@ -1,54 +1,69 @@
-package com.example.simplecalculator.view
+package com.example.simplecalculator
 
-import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import com.example.simplecalculator.R
-import com.example.simple_calculator.CalculatorViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import com.example.simple_calculator.R
 
 class MainActivity : AppCompatActivity() {
-
-    private val calculatorViewModel: CalculatorViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        calculatorViewModel.result.observe(this, Observer {
-            resultTextView.text = it.toString()
-        })
+        val number1: EditText = findViewById(R.id.number1)
+        val number2: EditText = findViewById(R.id.number2)
+        val result: TextView = findViewById(R.id.result)
 
-        addButton.setOnClickListener {
-            val number1 = number1EditText.text.toString().toDoubleOrNull()
-            val number2 = number2EditText.text.toString().toDoubleOrNull()
-            if (number1 != null && number2 != null) {
-                calculatorViewModel.add(number1, number2)
+        val buttonAdd: Button = findViewById(R.id.buttonAdd)
+        val buttonSubtract: Button = findViewById(R.id.buttonSubtract)
+        val buttonMultiply: Button = findViewById(R.id.buttonMultiply)
+        val buttonDivide: Button = findViewById(R.id.buttonDivide)
+
+        buttonAdd.setOnClickListener {
+            val num1 = number1.text.toString().toDoubleOrNull()
+            val num2 = number2.text.toString().toDoubleOrNull()
+            if (num1 != null && num2 != null) {
+                result.text = (num1 + num2).toString()
+            } else {
+                Toast.makeText(this, "Please enter valid numbers", Toast.LENGTH_SHORT).show()
             }
         }
 
-        subtractButton.setOnClickListener {
-            val number1 = number1EditText.text.toString().toDoubleOrNull()
-            val number2 = number2EditText.text.toString().toDoubleOrNull()
-            if (number1 != null && number2 != null) {
-                calculatorViewModel.subtract(number1, number2)
+        buttonSubtract.setOnClickListener {
+            val num1 = number1.text.toString().toDoubleOrNull()
+            val num2 = number2.text.toString().toDoubleOrNull()
+            if (num1 != null && num2 != null) {
+                result.text = (num1 - num2).toString()
+            } else {
+                Toast.makeText(this, "Please enter valid numbers", Toast.LENGTH_SHORT).show()
             }
         }
 
-        multiplyButton.setOnClickListener {
-            val number1 = number1EditText.text.toString().toDoubleOrNull()
-            val number2 = number2EditText.text.toString().toDoubleOrNull()
-            if (number1 != null && number2 != null) {
-                calculatorViewModel.multiply(number1, number2)
+        buttonMultiply.setOnClickListener {
+            val num1 = number1.text.toString().toDoubleOrNull()
+            val num2 = number2.text.toString().toDoubleOrNull()
+            if (num1 != null && num2 != null) {
+                result.text = (num1 * num2).toString()
+            } else {
+                Toast.makeText(this, "Please enter valid numbers", Toast.LENGTH_SHORT).show()
             }
         }
 
-        divideButton.setOnClickListener {
-            val number1 = number1EditText.text.toString().toDoubleOrNull()
-            val number2 = number2EditText.text.toString().toDoubleOrNull()
-            if (number1 != null && number2 != null) {
-                calculatorViewModel.divide(number1, number2)
+        buttonDivide.setOnClickListener {
+            val num1 = number1.text.toString().toDoubleOrNull()
+            val num2 = number2.text.toString().toDoubleOrNull()
+            if (num1 != null && num2 != null) {
+                if (num2 != 0.0) {
+                    result.text = (num1 / num2).toString()
+                } else {
+                    Toast.makeText(this, "Cannot divide by zero", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Please enter valid numbers", Toast.LENGTH_SHORT).show()
             }
         }
     }

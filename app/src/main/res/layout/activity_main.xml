@@ -5,17 +5,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".view.MainActivity">
+    tools:context="com.example.simplecalculator.MainActivity">
 
     <EditText
-        android:id="@+id/number1EditText"
+        android:id="@+id/number1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter first number"
         android:inputType="numberDecimal" />
 
     <EditText
-        android:id="@+id/number2EditText"
+        android:id="@+id/number2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter second number"
@@ -29,42 +29,40 @@
         android:layout_marginTop="16dp">
 
         <Button
-            android:id="@+id/addButton"
+            android:id="@+id/buttonAdd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="+" />
 
         <Button
-            android:id="@+id/subtractButton"
+            android:id="@+id/buttonSubtract"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="-" />
 
         <Button
-            android:id="@+id/multiplyButton"
+            android:id="@+id/buttonMultiply"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="*" />
 
         <Button
-            android:id="@+id/divideButton"
+            android:id="@+id/buttonDivide"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="/" />
-
     </LinearLayout>
 
     <TextView
-        android:id="@+id/resultTextView"
+        android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Result"
         android:textSize="24sp"
+        android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginTop="24dp" />
-
+        android:layout_marginTop="16dp" />
 </LinearLayout>
